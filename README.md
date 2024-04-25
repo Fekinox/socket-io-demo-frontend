@@ -1,8 +1,9 @@
-# React + Vite
+# Socket IO demo frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Setup
 
-Currently, two official plugins are available:
+* Clone this repo.
+* Run `npm install`.
+* Run `npm run dev` to launch the development server. It will automatically
+  look for a backend server listening on port `3000`.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
