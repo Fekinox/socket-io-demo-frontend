@@ -3,12 +3,19 @@ import { socket } from '../services/socket.js'
 
 export const GameContext = createContext(null)
 
+/** Provides a reference to the current game state and operations on that
+* state to all children. */
 export function GameContextProvider({ children }) {
+  // Current connection status.
   const [connected, setConnected] = useState(socket.connected)
+  // Current username.
   const [username, setUsername] = useState('')
+  // Current logged-in state.
   const [loggedIn, setLoggedIn] = useState(false)
+  // Current game state.
   const [gameState, setGameState] = useState(null)
 
+  /** Sends a login request to the server. */
   function login(username) {
     socket.emit('login', { username }, (resp) => {
       console.log(resp)
@@ -22,6 +29,8 @@ export function GameContextProvider({ children }) {
     })
   }
 
+  // Initialize all event handlers, and automatically dispose of them once
+  // we are done.
   useEffect(() => {
     function onConnect() {
       setConnected(true)
@@ -51,8 +60,9 @@ export function GameContextProvider({ children }) {
       gameState,
       connected,
       loggedIn,
-      login,
       username,
+
+      login,
     }}>
       {children} 
     </GameContext.Provider>
